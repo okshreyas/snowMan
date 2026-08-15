@@ -15,13 +15,14 @@ public class GEHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public Map<String, String> handleValidationExceptions(MethodArgumentNotValidException ex) {
-        Map<String, String> errors = new LinkedHashMap<>();
+        Map<String, String> toxicErrors = new LinkedHashMap<>();
+        toxicErrors.put("Vibe Check", "FAILED. You really thought this data would work? 💀");
         
         for (FieldError error : ex.getBindingResult().getFieldErrors()) {
-            errors.put(error.getField(), error.getDefaultMessage());
+            toxicErrors.put(error.getField(), error.getDefaultMessage());
         }
         
-        return errors;
+        return toxicErrors;
     }
     
 }

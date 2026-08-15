@@ -24,8 +24,8 @@ jobs:
     - name: Build and Test with Maven
       run: mvn clean package
       
-    - name: Build Status Verification
-      run: echo "Build completed successfully."
+    - name: Vibe Check Passed ✅
+      run: echo "The Snowman API built successfully in the cloud! No cap."
 
     - name: Save JAR Artifact 📦
       uses: actions/upload-artifact@v4
