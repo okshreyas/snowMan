@@ -1,0 +1,28 @@
+name: Snowman CI/CD Pipeline ☃️🚀
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Code 📂
+      uses: actions/checkout@v4
+
+    - name: Set up JDK ☕
+      uses: actions/setup-java@v4
+      with:
+        java-version: '25-ea'
+        distribution: 'oracle'
+        cache: maven
+
+    - name: Build and Test with Maven 🛠️
+      run: mvn clean package
+      
+    - name: Vibe Check Passed ✅
+      run: echo "The Snowman API built successfully in the cloud! No cap."
