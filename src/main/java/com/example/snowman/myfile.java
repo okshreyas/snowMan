@@ -6,6 +6,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class myfile {
     
+    private final SnowmanRepository repository;
+
+    public myfile(SnowmanRepository repository) {
+        this.repository = repository;
+    }
+
     @Bean
     public String newLife(){
         System.out.println("Exist for Humanity");
@@ -17,10 +23,13 @@ public class myfile {
     }
 
     public String evaluateSnowman(Snowman snowman){
-        if(Boolean.TRUE.equals(snowman.getHasHat())){
-            return snowman.getName() + " is true ";
+        // Save to Database!
+        Snowman savedSnowman = repository.save(snowman);
+        
+        if(Boolean.TRUE.equals(savedSnowman.getHasHat())){
+            return savedSnowman.getName() + " is true and SAVED with ID: " + savedSnowman.getId();
         } else {
-            return snowman.getName() + " is false ";
+            return savedSnowman.getName() + " is false and SAVED with ID: " + savedSnowman.getId();
         }
     }
 }

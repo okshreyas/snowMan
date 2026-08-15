@@ -12,7 +12,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth.anyRequest().authenticated())
+            .headers(headers -> headers.frameOptions(frameOptions -> frameOptions.disable())) // Allow H2 frames
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/h2-console/**").permitAll() // Allow H2 Console without auth
+                .anyRequest().authenticated()
+            )
             .httpBasic(org.springframework.security.config.Customizer.withDefaults());
         return http.build();
     }
