@@ -10,27 +10,27 @@ import jakarta.validation.constraints.Positive;
 
 public class Snowman {
 
-    @NotBlank(message = "Bro, a snowman without a name is literally just a puddle 💀")
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @NotNull(message = "Height is required!")
-    @Positive(message = "Height needs to be positive, we aren't digging a hole 🕳️")
+    @NotNull(message = "Height is mandatory")
+    @Positive(message = "Height must be a positive value")
     private Double height;
 
-    @NotBlank(message = "Bestie the email is completely empty... it's giving ghosted 👻")
-    @Email(message = "That is literally not an email format, who are you trying to text?? 📱")
+    @NotBlank(message = "Email is mandatory")
+    @Email(message = "Email format is invalid")
     private String email;
 
-    @NotNull(message = "You forgot the coal buttons! How is he supposed to see?? 👁️👄👁️")
-    @Min(value = 2, message = "Bro needs at least 2 buttons, don't be cheap 😤")
-    @Max(value = 10, message = "Woah, 10 buttons max. He's a snowman, not a Gucci jacket 🧥 chill")
+    @NotNull(message = "Coal buttons count is mandatory")
+    @Min(value = 2, message = "A snowman must have at least 2 coal buttons")
+    @Max(value = 10, message = "A snowman cannot have more than 10 coal buttons")
     private Integer coalButtons;
 
-    @NotBlank(message = "You can't just leave the SecretCode blank, this is a VIP area 🛑")
-    @Pattern(regexp = "^[A-Z]{3}[0-9]{3}$", message = "Code must be exactly 3 uppercase letters and 3 numbers dummy 🤓")
+    @NotBlank(message = "Secret code is mandatory")
+    @Pattern(regexp = "^[A-Z]{3}[0-9]{3}$", message = "Secret code must consist of exactly 3 uppercase letters followed by 3 digits")
     private String secretCode;
  
-    @NotNull(message = "We absolutely need the schoolFees, education isn't free 💸")
+    @NotNull(message = "School fees are mandatory")
     private Integer schoolFees;
 
     @NotNull(message = "Does it have a hat or not? Tell me!")
